@@ -4,3 +4,15 @@ aws budgets create-budget \
     --account-id $AWS_ACCOUNT_ID \
     --budget file://aws/json/budget.json \
     --notifications-with-subscribers file://aws/json/notifications-with-subscribers.json
+
+# The following command is used to create a topic in sns
+aws sns create-topic --name billing-alarm
+
+# The following command is used subscribe to a sns topic
+aws sns subscribe \
+    --topic-arn arn:aws:sns:ap-south-1:$AWS_ACCOUNT_ID:billing-alarm \
+    --protocol email \
+    --notification-endpoint singh.sanidhya30@gmail.com
+
+# Create an alarm in the cloudwatch for the 1$ budget
+aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
