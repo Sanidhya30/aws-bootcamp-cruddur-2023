@@ -10,7 +10,7 @@ aws sns create-topic --name billing-alarm
 
 # The following command is used subscribe to a sns topic
 aws sns subscribe \
-    --topic-arn arn:aws:sns:ap-south-1:$AWS_ACCOUNT_ID:billing-alarm \
+    --topic-arn arn:aws:sns:us-east-1:$AWS_ACCOUNT_ID:billing-alarm \
     --protocol email \
     --notification-endpoint singh.sanidhya30@gmail.com
 
